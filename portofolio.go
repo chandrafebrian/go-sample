@@ -1,1 +1,3 @@
 package gosample
+
+//contoh
