@@ -1,3 +1,1 @@
-package gosample
-
-//contoh
+package main
