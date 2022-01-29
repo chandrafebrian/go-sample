@@ -2,28 +2,15 @@ package main
 
 import "fmt"
 
-// cara membuat user input
-// konsep input user
+// konsep array and slice
 
 func main() {
-	var userName string
-	var lastName string
-	var email string
+	var userName = "chandra"
+	var lastName = "febrian"
+	var email = "chandra@gmail.com"
 	var userTiket uint
 	var stokTiket uint = 100
 	var bookings [50]string
-
-	fmt.Println("Masukan Nama Depan")
-	fmt.Scan(&userName)
-
-	fmt.Println("Masukan Nama Belakang")
-	fmt.Scan(&lastName)
-
-	fmt.Println("Masukan Jumlah Pesanan Tiket")
-	fmt.Scan(&userTiket)
-
-	fmt.Println("Masukan Email Anda")
-	fmt.Scan(&email)
 
 	stokTiket = stokTiket - userTiket
 	bookings[0] = userName + " " + lastName
