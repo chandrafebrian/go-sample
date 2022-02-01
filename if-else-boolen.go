@@ -50,7 +50,7 @@ func main() {
 			fmt.Printf("Terimakasih %v %v Sudah Booking  %v Tiket Untuk Nonton Bioskop Selanjutnya akan kami konfrimasi Berhasil booking di kirim ke email %v  \n",
 				userName, lastName, userTiket, email)
 
-			// nama identifier untuk memanggil nilai value dr variable lain
+			// (firstName) adalah nama identifier untuk memanggil nilai value dr variable lain
 			firstName := []string{}
 			for _, booking := range bookings {
 				var names = strings.Fields(booking)
