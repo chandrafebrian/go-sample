@@ -35,45 +35,62 @@ func main() {
 
 			fmt.Printf("maaf !!!  anda tidak bisa booking %v  tiket, saat ini hanya tersedia %v tiket\n", userTiket, stokTiket)
 			break
-		}
-
-		stokTiket = stokTiket - userTiket
-		bookings = append(bookings, userName+" "+lastName)
-
-		fmt.Printf("Terimakasih %v %v Sudah Booking  %v Tiket Untuk Nonton Bioskop Selanjutnya akan kami konfrimasi Berhasil booking di kirim ke email %v  \n",
-			userName, lastName, userTiket, email)
-
-		// nama identifier untuk memanggil nilai value dr variable lain
-		firstName := []string{}
-		for _, booking := range bookings {
-			var names = strings.Fields(booking)
-
-			firstName = append(firstName, names[0])
 
 		}
-		fmt.Printf("the first name of all collect member : %v \n", firstName)
 
-		fmt.Printf("the first name profile: %v \n", userName)
+		isValidName := len(userName) >= 2 && len(lastName) >= 2
+		isValidEmail := strings.Contains(email, "@")
+		isValidTiket := userTiket > 0 && userTiket < stokTiket
 
-		fmt.Printf("sisa stok available tinggal %v \n", stokTiket)
+		if isValidName && isValidEmail && isValidTiket {
 
-		fmt.Printf("ini adalah hasil pengambilan data nama dari seluruh user yg sudah booking : %v \n", bookings)
+			stokTiket = stokTiket - userTiket
+			bookings = append(bookings, userName+" "+lastName)
 
-		var tiketKosong bool = stokTiket == 0
+			fmt.Printf("Terimakasih %v %v Sudah Booking  %v Tiket Untuk Nonton Bioskop Selanjutnya akan kami konfrimasi Berhasil booking di kirim ke email %v  \n",
+				userName, lastName, userTiket, email)
 
-		if tiketKosong {
+			// nama identifier untuk memanggil nilai value dr variable lain
+			firstName := []string{}
+			for _, booking := range bookings {
+				var names = strings.Fields(booking)
 
-			fmt.Println("tiket sudah habis terjual")
-			break
+				firstName = append(firstName, names[0])
 
-		} else if stokTiket < userTiket {
-			println("pesanan Berhasil")
-			break
+			}
+			fmt.Printf("the first name of all collect member : %v \n", firstName)
+
+			fmt.Printf("the first name profile: %v \n", userName)
+
+			fmt.Printf("sisa stok available tinggal %v \n", stokTiket)
+
+			fmt.Printf("ini adalah hasil pengambilan data nama dari seluruh user yg sudah booking : %v \n", bookings)
+
+			var tiketKosong bool = stokTiket == 0
+
+			if tiketKosong {
+
+				fmt.Println("tiket sudah habis terjual")
+				break
+
+			} else if stokTiket < userTiket {
+				println("pesanan Berhasil")
+				break
+			}
+
+		} else {
+			if !isValidName {
+				fmt.Println("error nama depan atau nama belakang terlalu singkat minimal 2 karakter")
+
+			}
+			if !isValidEmail {
+				fmt.Println("error email anda tidak mengandung karakter @")
+			}
+			if !isValidTiket {
+				fmt.Println("tiket tidak boleh kosong atau 0 ")
+			}
+
 		}
-		// if stokTiket < 50 {
-		// 	println("Pesanan Berhasil")
-		// 	break
-		// }
 
 	}
 
