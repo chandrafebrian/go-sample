@@ -93,5 +93,24 @@ package main
 // 		}
 
 // 	}
+// 	// switch statement //
+// 	city := "London"
+// 	switch city {
+// 	case "New york ":
+// 		// execute code for booking new york conference ticket
+// 	case "Singapore":
+// 	// execute code for booking singapore conference ticket
+// 	case "London":
+// 	// some code
+// 	case "Berlin":
+// 	// some code here
+// 	case "Mexico":
+// 	// some code here
+// 	case "Indonesia":
+// 		// some code here
+
+// 	default:
+// 		fmt.Print("No city selected")
+// 	}
 
 // }
