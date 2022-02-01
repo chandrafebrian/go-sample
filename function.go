@@ -5,59 +5,119 @@ import (
 	"strings"
 )
 
+//konsep loop dengan for
+
 func main() {
 
-	const conferenceTickets int = 50
-	var remainingTickets uint = 50
-	conferenceName := "Go Conference"
+	var stokTiket uint = 50
 	bookings := []string{}
 
-	fmt.Printf("Welcome to %v booking application.\nWe have total of %v tickets and %v are still available.\nGet your tickets here to attend\n", conferenceName, conferenceTickets, remainingTickets)
-
-	// memanggil nama fungsi dengan paramater int
-	greetUsers(8888)
+	namaFungsi1(888)
 
 	for {
 
-		var firstName string
-		var lastName string
-		var email string
-		var userTickets uint
+		userName, lastName, email, userTiket := getUserfunction()
+		// if userTiket > stokTiket {
 
-		// asking for user input
-		fmt.Println("Enter Your First Name: ")
-		fmt.Scanln(&firstName)
+		// 	fmt.Printf("maaf !!!  anda tidak bisa booking %v  tiket, saat ini hanya tersedia %v tiket\n", userTiket, stokTiket)
+		// 	break
 
-		fmt.Println("Enter Your Last Name: ")
-		fmt.Scanln(&lastName)
+		// }
 
-		fmt.Println("Enter Your Email: ")
-		fmt.Scanln(&email)
+		isValidName, isValidEmail, isValidTiket := validasiInput(userName, lastName, userTiket, email, stokTiket)
 
-		fmt.Println("Enter number of tickets: ")
-		fmt.Scanln(&userTickets)
+		if isValidName && isValidEmail && isValidTiket {
 
-		// book ticket in system
-		remainingTickets = remainingTickets - userTickets
-		bookings = append(bookings, firstName+" "+lastName)
+			stokTiket = stokTiket - userTiket
+			bookings = append(bookings, userName+" "+lastName)
 
-		fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v\n", firstName, lastName, userTickets, email)
-		fmt.Printf("%v tickets remaining for %v\n", remainingTickets, conferenceName)
+			fmt.Printf("Terimakasih %v %v Sudah Booking  %v Tiket Untuk Nonton Bioskop Selanjutnya akan kami konfrimasi Berhasil booking di kirim ke email %v  \n",
+				userName, lastName, userTiket, email)
 
-		// print only first names
-		firstNames := []string{}
-		for _, booking := range bookings {
-			var names = strings.Fields(booking)
-			firstNames = append(firstNames, names[0])
+			firstName := namaFungsi2(bookings)
+			fmt.Printf("the first names of booking are : %v \n", firstName)
+
+			// ..................................... //
+
+			fmt.Printf("the first name profile: %v \n", userName)
+
+			fmt.Printf("sisa stok available tinggal %v \n", stokTiket)
+
+			fmt.Printf("ini adalah hasil pengambilan data nama dari seluruh user yg sudah booking : %v \n", bookings)
+
+			var tiketKosong bool = stokTiket == 0
+
+			if tiketKosong {
+
+				fmt.Println("tiket sudah habis terjual")
+				break
+
+			} else if stokTiket < userTiket {
+				println("pesanan Berhasil")
+				break
+			}
+
+		} else {
+			if !isValidName {
+				fmt.Println("error nama depan atau nama belakang terlalu singkat minimal 2 karakter")
+
+			}
+			if !isValidEmail {
+				fmt.Println("error email anda tidak mengandung karakter @")
+			}
+			if !isValidTiket {
+				fmt.Println("tiket tidak boleh kosong atau 0 ")
+			}
+
 		}
-		fmt.Printf("The first names %v\n", firstNames)
 
 	}
 
 }
 
-// nama fungsi greetuser dengan nama paramter int
-func greetUsers(parameter int) {
+func namaFungsi1(namaParamaterAngka int) {
+	fmt.Printf("ini hasil nama fungsi 1 %v \n", namaParamaterAngka)
+}
 
-	fmt.Printf("ini adalah nilai paramter integer %v dari memanggil nama fungsi \n", parameter)
+func namaFungsi2(bookings []string) []string {
+
+	firstName := []string{}
+	for _, booking := range bookings {
+		var names = strings.Fields(booking)
+
+		firstName = append(firstName, names[0])
+
+	}
+	return firstName
+}
+
+func validasiInput(userName string, lastName string, userTiket uint, email string, stokTiket uint) (bool, bool, bool) {
+	isValidName := len(userName) >= 2 && len(lastName) >= 2
+	isValidEmail := strings.Contains(email, "@")
+	isValidTiket := userTiket > 0 && userTiket < stokTiket
+
+	return isValidName, isValidEmail, isValidTiket
+
+}
+
+func getUserfunction() (string, string, string, uint) {
+	var userName string
+	var lastName string
+	var email string
+	var userTiket uint
+
+	fmt.Println("Masukan Nama Depan")
+	fmt.Scan(&userName)
+
+	fmt.Println("Masukan Nama Belakang")
+	fmt.Scan(&lastName)
+
+	fmt.Println("Masukan Jumlah Pesanan Tiket")
+	fmt.Scan(&userTiket)
+
+	fmt.Println("Masukan Email Anda")
+	fmt.Scan(&email)
+
+	return userName, lastName, email, userTiket
+
 }
