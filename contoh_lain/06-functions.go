@@ -1,8 +1,5 @@
 package main
 
-// * (Parameter) adalah sebutan untuk nilai inputan fungsi pada saat fungsi itu di definisikan,
-// * (argument) adalah sebutan untuk nilai inputan fungsi pada saat fungsi itu dipanggil.
-
 // import (
 // 	"fmt"
 // 	"strings"

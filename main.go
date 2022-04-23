@@ -1,5 +1,7 @@
 package main
 
+// import "fmt"
+
 // func main() {
 // 	// variable & conts
 // 	var conferenceName = "Chandra "
@@ -7,6 +9,7 @@ package main
 // 	var remainingTiket = 50
 // 	//
 // 	println("tiket yg tersedia tinggal", remainingTiket, "segera dapatkan")
+// 	println("hallo halo", conferenceName)
 
 // 	println("welcome to to booking ticket", conferenceName)
 // 	println("dapatkan segera jumlah tiket saat ini hanya ada", conferenceTiket, "tunggu apa lagi")

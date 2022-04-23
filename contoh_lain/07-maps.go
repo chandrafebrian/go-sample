@@ -1,10 +1,8 @@
 package main
 
-// * (Parameter) adalah sebutan untuk nilai inputan fungsi pada saat fungsi itu di definisikan,
-// * (argument) adalah sebutan untuk nilai inputan fungsi pada saat fungsi itu dipanggil.
-
 // import (
 // 	"fmt"
+// 	"strconv"
 // 	"strings"
 // )
 
@@ -12,7 +10,7 @@ package main
 
 // var remainingTickets uint = 50
 // var conferenceName = "Go Conference"
-// var bookings = []string{}
+// var bookings = make([]map[string]string, 0)
 
 // func main() {
 
@@ -53,8 +51,7 @@ package main
 // 	firstNames := []string{}
 
 // 	for _, booking := range bookings {
-// 		var names = strings.Fields(booking)
-// 		firstNames = append(firstNames, names[0])
+// 		firstNames = append(firstNames, booking["firstName"])
 // 	}
 // 	return firstNames
 // }
@@ -93,7 +90,15 @@ package main
 
 // func bookTicket(userTickets uint, firstName string, lastName string, email string) {
 // 	remainingTickets = remainingTickets - userTickets
-// 	bookings = append(bookings, firstName+" "+lastName)
+
+// 	// create user map
+// 	var user = make(map[string]string)
+// 	user["firstName"] = firstName
+// 	user["lastName"] = lastName
+// 	user["email"] = email
+// 	user["numberOfTickets"] = strconv.FormatUint(uint64(userTickets), 10)
+
+// 	bookings = append(bookings, user)
 
 // 	fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v\n", firstName, lastName, userTickets, email)
 // 	fmt.Printf("%v tickets remaining for %v\n", remainingTickets, conferenceName)
