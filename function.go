@@ -104,7 +104,7 @@ package main
 // 	fmt.Println("Masukan Jumlah Pesanan Tiket")
 // 	fmt.Scan(&userTiket)
 
-// 	fmt.Println("Masukan Email Anda")
+// 	fmt.Println("Masukan Email cuy")
 // 	fmt.Scan(&email)
 
 // 	return userName, lastName, email, userTiket
