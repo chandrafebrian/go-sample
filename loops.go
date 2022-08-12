@@ -18,7 +18,7 @@ package main
  		var email string
  		var userTiket uint
 
- 		fmt.Println("Masukan Nama Depan")
+ 		fmt.Println("Masukan Nama Depan Anda")
  		fmt.Scan(&userName)
 
  		fmt.Println("Masukan Nama Belakang")
